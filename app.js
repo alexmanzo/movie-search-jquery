@@ -9,17 +9,13 @@ function getAPIData(searchTerm, callback) {
 	$.getJSON(movieSearchURL, search, callback)
 }
 
-
-
-
-//front link for poster- https://image.tmdb.org/t/p/w1280
-
-
 function displayTMDBSearchData(data) {
 	const results = `
 	<div class="result-container">
 		<h2>${data.results[0].title}</h2>
-		<img src="https://image.tmdb.org/t/p/w1280${data.results[0].poster_path}">
+		<p>Plot Summary: ${data.results[0].overview}</p>
+		<p>Release date: ${data.results[0].release_date}</p>
+		<img src="https://image.tmdb.org/t/p/w1280${data.results[0].poster_path}" alt="${data.results[0].title}">
 	</div>
 	`;
 	$('.js-search-results').html(results);
