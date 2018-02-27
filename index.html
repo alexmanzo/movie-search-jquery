@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<title>Movie Search</title>
-	<meta name="description" content="Search for information on your favorite movies!">
+	<meta name="description" content="Trying to figure out what movie to watch? We've got you covered!">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
@@ -13,17 +13,18 @@
 	<form action="#" class="js-search-form">
 		<label for="query">Search for your favorite movies</label>
 		<br>
-		<input id="query" type="text" class="js-search" placeholder="The Lion King, Interstellar">
+		<input id="query" type="text" class="js-search typeahead tt-input" placeholder="The Lion King, Interstellar">
 		<button type="submit">SEARCH</button>
 	</form>
-	<main role="main">
-		<div class="js-search-results-id"></div>		
+	<main role="main">	
 		<div class="js-search-results"></div>
 	</main>
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
+     <script type="text/javascript" src="handlebars.js"></script>
+    <script type="text/javascript" src="typeahead.bundle.min.js"></script>
 	<script type="text/javascript" src="app.js"></script>
 </body>
 </html>
