@@ -72,12 +72,18 @@ function displayMovieData(data) {
       <img src="https://image.tmdb.org/t/p/w1280${data.poster_path}" alt="${data.title}" id="poster">
       <h2 class="transparent">${data.title}</h2>
       <h3 class="transparent">${data.tagline}</h3>
-      <p class="transparent">Year Released: ${data.release_date.substring(0,4)}</p>
-      <p class="transparent">Genres: ${data.genres.map(function(genre) {return ` ${genre.name}`})}</p>
-      <p class="transparent">Plot Summary: ${data.overview}</p>
-      <p class="transparent">Runtime: ${data.runtime} minutes</p>
-      <p class="transparent">Budget: $${data.budget.toLocaleString()}</p>
-      <p class="transparent">Revenue: $${data.revenue.toLocaleString()}</p>
+      <h4 class="category">Year Released:</h4>
+      <p class="transparent">${data.release_date.substring(0,4)}</p>
+      <h4 class="category">Genres:</h4>
+      <p class="transparent">${data.genres.map(function(genre) {return ` ${genre.name}`})}</p>
+      <h4 class="category">Plot Summary:</h4>
+      <p class="transparent">${data.overview}</p>
+      <h4 class="category">Runtime:</h4>
+      <p class="transparent">${data.runtime} minutes</p>
+      <h4 class="category">Budget:</h4>
+      <p class="transparent">$${data.budget.toLocaleString()}</p>
+      <h4 class="category">Revenue:</h4>
+      <p class="transparent">$${data.revenue.toLocaleString()}</p>
   </div>
   `;
 	$('.js-search-results').html(results);
