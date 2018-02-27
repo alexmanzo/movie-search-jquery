@@ -25,8 +25,8 @@ $('.typeahead').typeahead(null, {
     displayKey: 'value',
     source: movies.ttAdapter(),
     templates: {
-        suggestion: Handlebars.compile("<p style='padding:6px'><b>{{value}}</b></p>"),
-        footer: Handlebars.compile("<b>Searched for '{{query}}'</b>")
+        suggestion: Handlebars.compile("<p style='padding:8px'>{{value}}</p>"),
+        footer: Handlebars.compile("<p style='padding:8px'>Searched for '{{query}}'</p>")
     }
 });
 });
@@ -67,17 +67,17 @@ function getAPIData(searchTerm, callback) {
 
 function displayMovieData(data) {
 	const results = `
-    <div class="result-container">
-    <h2>${data.title}</h2>
-    <h3>${data.tagline}</h3>
-    <p>Year Released: ${data.release_date.substring(0,4)}</p>
-    <p>Genres: ${data.genres.map(function(genre) {return ` ${genre.name}`})}</p>
-    <p>Plot Summary: ${data.overview}</p>
-    <p>Runtime: ${data.runtime} minutes</p>
-    <p>Budget: $${data.budget.toLocaleString()}</p>
-    <p>Revenue: $${data.revenue.toLocaleString()}</p>
-    <img src="https://image.tmdb.org/t/p/w1280${data.poster_path}" alt="${data.title}" id="poster">
-    <img src="https://image.tmdb.org/t/p/w1280${data.backdrop_path}" alt="${data.title}" id="backdrop">
+    <div class="result-container" style="background:linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.9)),
+      url(https://image.tmdb.org/t/p/w1280${data.backdrop_path})no-repeat center center">
+      <img src="https://image.tmdb.org/t/p/w1280${data.poster_path}" alt="${data.title}" id="poster">
+      <h2 class="transparent">${data.title}</h2>
+      <h3 class="transparent">${data.tagline}</h3>
+      <p class="transparent">Year Released: ${data.release_date.substring(0,4)}</p>
+      <p class="transparent">Genres: ${data.genres.map(function(genre) {return ` ${genre.name}`})}</p>
+      <p class="transparent">Plot Summary: ${data.overview}</p>
+      <p class="transparent">Runtime: ${data.runtime} minutes</p>
+      <p class="transparent">Budget: $${data.budget.toLocaleString()}</p>
+      <p class="transparent">Revenue: $${data.revenue.toLocaleString()}</p>
   </div>
   `;
 	$('.js-search-results').html(results);
