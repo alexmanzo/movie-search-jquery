@@ -6,7 +6,7 @@ const movies = new Bloodhound({
     },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: {
-        url: `http://api.themoviedb.org/3/search/movie?query=%QUERY&api_key=8541c092938098d21b11f58a14dd114e`,
+        url: `https://api.themoviedb.org/3/search/movie?query=%QUERY&api_key=8541c092938098d21b11f58a14dd114e`,
         wildcard: '%QUERY',
         filter: function (movies) {
             return $.map(movies.results, function (movie) {
