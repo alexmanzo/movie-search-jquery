@@ -2,23 +2,28 @@
 <html lang="en">
 <head>
 	<title>Movie Search</title>
-	<meta name="description" content="Trying to figure out what movie to watch? We've got you covered!">
+	<meta name="description" content="Find information on your favorite films!">
+	<link href="https://fonts.googleapis.com/css?family=Mukta+Malar:300,400,500,600,700" rel="stylesheet">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
 	<header role="banner">
-		<h1>Movie Search</h1>
+		<h1>MOVIE SEARCH</h1>
 	</header>
-	<form action="#" class="js-search-form">
-		<label for="query">Search for your favorite movies</label>
-		<br>
-		<input id="query" type="text" class="js-search typeahead tt-input" placeholder="The Lion King, Interstellar">
-		<button type="submit">SEARCH</button>
-	</form>
-	<main role="main">	
-		<div class="js-search-results"></div>
-	</main>
+	<div class="wrapper">
+		<form action="#" class="js-search-form">
+			<fieldset>
+				<label for="query">Search for your favorite movies</label>
+				<br>
+				<input id="query" type="text" class="js-search typeahead" placeholder="The Lion King, Interstellar">
+				<button type="submit" class="js-search">SEARCH</button>
+			</fieldset>
+		</form>
+		<main role="main">	
+			<div class="js-search-results"></div>
+		</main>
+	</div>	
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
