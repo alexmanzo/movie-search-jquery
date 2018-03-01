@@ -1,3 +1,4 @@
+//Initialize the Typeahead Functionality
 $(window).on('load', function() {
     // Instantiate the Bloodhound suggestion engine
     const movies = new Bloodhound({
@@ -36,7 +37,7 @@ function buildURL(firstCat, secondCat, thirdCat) {
     return `https://api.themoviedb.org/3/${firstCat}${secondCat}${thirdCat}`
 }
 
-//Get movie data from search. Second and Third Cats MUST include / at beginning of parameter when function called.
+//Get movie data from search. Second and Third Cats MUST include / for URL.
 function getAPIData(searchTerm, callback) {
     const settings = {
         url: buildURL('search', '/movie', ''),
@@ -52,6 +53,7 @@ function getAPIData(searchTerm, callback) {
     $.ajax(settings);
 }
 
+//Get movie data from MovieID. The movieID is retrieved in displaySearchResults()
 function getAPIDataByMovieID(movieID, callback) {
     const settings = {
         url: buildURL('movie/', movieID, ''),
@@ -65,6 +67,7 @@ function getAPIDataByMovieID(movieID, callback) {
     $.ajax(settings);
 }
 
+//Generate HTML structure for search results.
 function renderSearchResults(result) {
     return `
         <div class="search-result-container transparent row col-12">
@@ -79,12 +82,14 @@ function renderSearchResults(result) {
     `
 }
 
+//Callback function for GetAPIData. Retrieves data and writes to page.
 function displaySearchResults(data) {
     const results = data.results.map((item, index) => renderSearchResults(item))
     const totalResultsNum = `<p class="results-num col-12">Your search returned <span class="resultsNum">${data.total_results}</span> results.</p>`;
     $('.js-results-num').prop('hidden', false);
     $('.js-results-num').html(totalResultsNum);
     $('.js-search-results').html(results);
+    //Listeners to retrieve MovieID and navigate to movie page.
     $('.js-search-results').on('click', '.search-title', function(event){
         let movieID = $(this).attr('id')
         console.log(movieID)
@@ -97,7 +102,7 @@ function displaySearchResults(data) {
     })      
 }
 
-
+//Displays movie page
 function displayMovieData(data) {
     const movie = `
             <div class="result-container col-12" aria-live="assertive" style="background:linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.9)),
