@@ -206,5 +206,10 @@ input[placeholder] {
     	color: #081c24;
     	background-color: #01d277;
 	}
+
+	.tagline {
+		line-height: 24px;
+	}
+
 }
 
