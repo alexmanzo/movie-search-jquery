@@ -83,8 +83,8 @@ function displayMovieData(data) {
                 </div>
                 <div class="right-info-container transparent col-4">
                     <h4 class="category transparent">GENRES:<span class="transparent info text-heavy">${data.genres.map(function(genre) {return ` ${genre.name}`})}</span></h4>
-                    <h4 class="category transparent">BUDGET:<span class="transparent info">${data.budget.toLocaleString()}</span></h4>
-                    <h4 class="category transparent">REVENUE:<span class="transparent info">${data.revenue.toLocaleString()}</span></h4>
+                    <h4 class="category transparent">BUDGET:<span class="transparent info">$${data.budget.toLocaleString()}</span></h4>
+                    <h4 class="category transparent">REVENUE:<span class="transparent info">$${data.revenue.toLocaleString()}</span></h4>
                 </div>
             </div>
   `;
