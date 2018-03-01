@@ -1,0 +1,210 @@
+* {
+	background-color: #081c24;
+	color: white;
+	font-family: 'Mukta Malar', sans-serif;
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box;    
+	box-sizing: border-box;
+}
+
+/* Header & Footer Styling */
+.header {
+	text-align: center;
+	text-decoration: none;
+	font-family: 'Pragati Narrow', sans-serif;
+	margin-bottom: 40px;
+}
+
+.tmdb-logo {
+	width: 100px;
+	height: auto;
+}
+
+/* Results Styling */
+
+.result-container {
+	margin: 40px auto;
+}
+
+.movie-title {
+	color: #01d277;
+	font-size: 50px;
+	font-family: 'Pragati Narrow', sans-serif;
+}
+
+.tagline {
+	font-family: 'Pragati Narrow', sans-serif;
+	font-style: italic;
+	font-weight: 400;
+}
+
+.category {
+	color: #01d277;
+	font-family: 'Pragati Narrow', sans-serif;
+	font-weight: 400;
+	font-size: 24px;
+}
+
+.info {
+	font-size: 24px;
+}
+
+.text-heavy {
+	font-size: 18px !important;
+}
+
+span.info {
+	padding-left: 15px;
+}
+
+
+#poster {
+	width: 100%;
+}
+
+.title-container {
+	display: inline-block;
+	float: left;
+	line-height: 5px;
+	padding-left: 20px;
+}
+
+
+.left-info-container, .right-info-container {
+	padding-left: 20px;
+	padding-right: 20px;
+	line-height: 25px;
+	text-align: justify;
+}
+
+.category, .info {
+	margin-top: -4px;
+}
+
+/* Eliminates background from p elements written to DOM */
+.transparent {
+	background: transparent;
+}
+
+/* Search Form Styling */
+.js-search {
+	border: none;
+	width: 40%;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+}
+
+.js-search-input {
+	font-size: 20px;
+	background-color: white;
+	color: black;
+	align-content: left;
+}
+
+input[placeholder] {
+	padding-left: 5px;
+}
+
+.search-label {
+	float: left;
+	align-content: left;
+}
+
+.js-search-button {
+	font-size: 20px;
+	background-color: transparent;
+	color: #01d277;
+	border-color: #01d277;
+	border-radius: 5px;
+	bottom: 0;
+}
+
+.js-search-button:hover {
+    color: #081c24;
+    background-color: #01d277;
+}
+
+.js-search-button:active {
+	color: #01d277;
+	background-color: #081c24;
+}
+
+
+/* Typeahead Styling */
+.twitter-typeahead, .tt-hint, .tt-input, .tt-menu { 
+	width: 100%;
+	padding: 0;
+}
+
+.tt-hint {
+	padding-left: 5px;
+    color: #999;
+}
+
+
+.tt-menu { 
+    width: 400px;
+    margin-top: 12px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.tt-suggestion {
+    padding-left: 5px;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.tt-suggestion:hover {
+	color: #081c24;
+    background-color: #01d277;
+}
+
+.tt-suggestion.tt-cursor { 
+    color: #081c24;
+    background-color: #01d277;
+}
+
+.tt-suggestion p {
+    margin: 0;
+}
+
+/* Responsive Styling */
+
+@media only screen and (min-width: 720px) {
+	.header {
+		font-size: 100px;
+	}
+
+	.form-input-wrapper {
+		width: calc(100% - 100px);
+	}
+
+	.js-search-button {
+		right: 12px;
+		position: absolute;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+	.header {
+		font-size: 50px;
+		width: 100%;
+	}
+
+	.form-input-wrapper {
+		width: 250px;
+	}
+
+	.tt-suggestion:active {
+	color: #081c24;
+    background-color: #01d277;
+	}
+
+	.js-search-button:active {
+    	color: #081c24;
+    	background-color: #01d277;
+	}
+}
+

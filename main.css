@@ -7,78 +7,83 @@
 	box-sizing: border-box;
 }
 
-p {
-	font-size: 18px;
-}
-
-.wrapper {
-	display: grid;
-	grid-template-columns: 10% 80% 10%;
-	grid-template-rows: 20% 20% 20% 20% 20%;
-}
-
 header {
-	font-size: 42px;
 	text-align: center;
-	background-color: blue;
-	grid-row: 1/ span 1;
 }
 
-a {
+a.header {
 	text-decoration: none;
+	font-family: 'Pragati Narrow', sans-serif;
+	font-size: 100px;
 }
 
+/* Results Styling*/
 
-.js-search-form, header, .js-search-results, .result-container {
-	grid-column: 2/3;
+.js-search-results: {
+	width: 40%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .result-container {
-	height: 525px;
+	height: auto;
+	width: 75%;
+	margin: 0 auto;
+	padding-left: 20px;
 }
 
+#poster {
+	height: 100%;
+	width: 27.3%;
+	float: left;
+}
+
+
+/* Movie Title */
 h2 {
-	color: #01d277;
 	font-size: 32px;
+	font-family: 'Pragati Narrow', sans-serif;
 }
 
+/* Tagline */
+i {
+	color: #01d277;
+}
+
+
+/* Movie Info Categories */
 .category {
 	color: #01d277;
 	font-size: 20px;
 	background: transparent;
+	font-family: 'Pragati Narrow', sans-serif;
 }
 
-.js-search-form {
-	grid-row: 1/ span 1;
-	margin-bottom: 20px;
-}
-
-.js-search-results {
-	grid-row: 2 / span 4;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-
-#poster {
-	width: 350px;
-	height: auto;
-	display: inline-block;
-	float: left;
-	margin-right: 25px;
-}
-
-
+/* Eliminates background from p elements written to DOM*/
 .transparent {
 	background: transparent;
 }
 
 
+p {
+	font-size: 18px;
+}
+
+
+
+/* Search Bar Styling */
 fieldset {
-	width: 550px;
 	border: none;
+}
+
+.search-label {
+	text-align: left;
+}
+
+.js-search-form {
+	margin: 0 auto;
+	text-align: center;
+	background-color: yellow;
 }
 
 input[placeholder] {
@@ -86,24 +91,33 @@ input[placeholder] {
 }
 
 
-
-input {
-	width: 400px;
+.typeahead {
 	font-size: 20px;
 	background-color: white;
 	color: black;
-
 }
 
-button {
+
+.js-search-button {
 	font-size: 18px;
 	background-color: transparent;
 	color: #01d277;
 	border-color: #01d277;
-	width: 100px;
 	height: 40px;
 	border-radius: 5px;
 	vertical-align: bottom;
+	margin-left: 10px;
+	position: absolute;
+}
+
+.js-search-button:hover {
+    color: #081c24;
+    background-color: #01d277;
+}
+
+.js-search-button:active {
+	color: #01d277;
+	background-color: #081c24;
 }
 
 /* Typeahead Styling */
@@ -136,6 +150,11 @@ button {
     padding: 3px 20px;
     font-size: 18px;
     line-height: 24px;
+}
+
+.tt-suggestion:hover {
+	color: #081c24;
+    background-color: #01d277;
 }
 
 .tt-suggestion.tt-cursor { 

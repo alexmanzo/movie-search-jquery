@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>Movie Search</title>
-	<meta name="description" content="Find information on your favorite films!">
-	<link href="https://fonts.googleapis.com/css?family=Mukta+Malar:300,400,500,600,700" rel="stylesheet">
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" type="text/css" href="main.css">
+    <title>Movie Search</title>
+    <meta name="description" content="Find information on your favorite films!">
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Malar:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pragati+Narrow:400,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="grid.css">
 </head>
+
 <body>
-	<header role="banner">
-		<a href="index.html">
-			<h1>MOVIE SEARCH</h1>
-		</a>
-	</header>
-	<div class="wrapper">
-		<form action="#" class="js-search-form">
-			<fieldset>
-				<label for="query">Search for your favorite movies</label>
-				<br>
-				<input id="query" type="text" class="js-search typeahead" placeholder="The Lion King, Interstellar">
-				<button type="submit" class="js-search">SEARCH</button>
-			</fieldset>
-		</form>
-		<main role="main" class="js-search-results">	
-			<div class="js-search-results"></div>
-		</main>
-	</div>	
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.min.js"
-      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-      crossorigin="anonymous"></script>
-     <script type="text/javascript" src="handlebars.js"></script>
+    <header role="banner" class="header row">
+        <a href="index.html" class="header">MOVIE SEARCH</a>
+    </header>
+    <form action="#" class="js-search-form">
+        <fieldset class="js-search">
+            <div class="form-input-wrapper">
+                <label for="query" class="search-label">Search for your favorite movies</label>
+                <br>
+                <input id="query" type="text" class="js-search-input typeahead" placeholder="The Lion King, Interstellar">
+            </div>
+            <button type="submit" class="js-search-button">SEARCH</button>
+        </fieldset>
+    </form>
+    <main role="main">
+        <div class="js-search-results row"></div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="handlebars.js"></script>
     <script type="text/javascript" src="typeahead.bundle.min.js"></script>
-	<script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 </body>
+
 </html>
