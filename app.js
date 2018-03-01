@@ -72,7 +72,7 @@ function renderSearchResults(result) {
     return `
         <div class="search-result-container transparent row col-12">
             <div class="poster-container search-poster col-3" id="${result.id}">
-                <img src="https://image.tmdb.org/t/p/w1280${result.poster_path}" alt="${result.title}" id="poster" class="poster">
+                <img src="https://image.tmdb.org/t/p/w1280${result.poster_path}" alt="${result.title}" class="poster">
             </div>
             <div class="search-text-info transparent col-6">
                 <h5 class="search-title" id="${result.id}">${result.title.toUpperCase()}<span class="title">(${result.release_date.substring(0,4)})</span></h5>
