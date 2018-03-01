@@ -20,9 +20,31 @@
 	height: auto;
 }
 
-/* Results Styling */
+/* Search Results Styling */
+.search-title {
+	color: #01d277;
+	font-size: 30px;
+	font-family: 'Pragati Narrow', sans-serif;
+}
 
-.result-container {
+span.title {
+	padding-left: 15px;
+	color: #01d277;
+	font-size: 30px;
+	font-family: 'Pragati Narrow', sans-serif;
+}
+
+.search-result-container {
+	line-height: 24px;
+}
+
+.search-title:hover, .search-poster:hover {
+	cursor: pointer;
+}
+
+/* Movie Page Styling */
+
+.result-container, .search-result-container {
 	margin: 40px auto;
 }
 
@@ -184,6 +206,14 @@ input[placeholder] {
 	.js-search-button {
 		right: 12px;
 		position: absolute;
+	}
+
+	.poster-container {
+		margin-left: 10%;
+	}
+
+	.results-num {
+		margin-left: 11%;
 	}
 }
 

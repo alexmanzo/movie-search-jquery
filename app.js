@@ -67,15 +67,21 @@ function getAPIDataByMovieID(movieID, callback) {
 
 function renderSearchResults(result) {
     return `
-        <div class="search-result-container row">
-            <h5 class="search-title" id="${result.id}">${result.title.toUpperCase()}</h5>
+        <div class="search-result-container transparent row col-12">
+            <div class="poster-container search-poster col-3" id="${result.id}">
+                <img src="https://image.tmdb.org/t/p/w1280${result.poster_path}" alt="${result.title}" id="poster" class="poster">
+            </div>
+            <div class="search-text-info transparent col-6">
+                <h5 class="search-title" id="${result.id}">${result.title.toUpperCase()}<span class="title">(${result.release_date.substring(0,4)})</span></h5>
+                <p class="info text-heavy">${result.overview}</p>
+            </div>
         </div>
     `
 }
 
 function displaySearchResults(data) {
     const results = data.results.map((item, index) => renderSearchResults(item))
-    const totalResultsNum = `<p>Your search returned <span class="resultsNum">${data.total_results}</span> results.</p>`;
+    const totalResultsNum = `<p class="results-num col-12">Your search returned <span class="resultsNum">${data.total_results}</span> results.</p>`;
     $('.js-results-num').prop('hidden', false);
     $('.js-results-num').html(totalResultsNum);
     $('.js-search-results').html(results);
@@ -84,6 +90,11 @@ function displaySearchResults(data) {
         console.log(movieID)
         getAPIDataByMovieID(movieID, displayMovieData)
     })
+    $('.js-search-results').on('click', '.search-poster', function(event){
+        let movieID = $(this).attr('id')
+        console.log(movieID)
+        getAPIDataByMovieID(movieID, displayMovieData)
+    })      
 }
 
 
@@ -95,7 +106,7 @@ function displayMovieData(data) {
                     <h2 class="transparent movie-title">${data.title.toUpperCase()}</h2>
                     <h3 class="transparent tagline">${data.tagline}</h3>
                 </div>
-                <div class="poster-container transparent col-4">
+                <div class="transparent col-4">
                     <img src="https://image.tmdb.org/t/p/w1280${data.poster_path}" alt="${data.title}" id="poster" class="poster">
                 </div>
                 <div class="left-info-container transparent col-4">
