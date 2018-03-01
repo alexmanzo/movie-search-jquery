@@ -52,37 +52,23 @@ function getAPIData(searchTerm, callback) {
     $.ajax(settings);
 }
 
-function getAPIDataByMovieID(searchTerm, callback) {
+function getAPIDataByMovieID(movieID, callback) {
     const settings = {
-        url: buildURL('search', '/movie', ''),
+        url: buildURL('movie/', movieID, ''),
         data: {
             api_key: '8541c092938098d21b11f58a14dd114e',
-            query: `${searchTerm}`
         },
         dataType: 'json',
         type: 'GET',
-        success: function(data) {
-            const idSettings = {
-                url: buildURL('movie/', `${data.results[0].id}`, ''),
-                data: {
-                    api_key: '8541c092938098d21b11f58a14dd114e'
-                },
-                dataType: 'json',
-                type: 'GET',
-                success: callback
-            };
-            $.ajax(idSettings)
-        }
+        success: callback
     };
-
     $.ajax(settings);
 }
 
 function renderSearchResults(result) {
     return `
         <div class="search-result-container row">
-            <h5 class="search-title">${result.title.toUpperCase()}</h5>
-            <h5 class="search-id">${result.id}</h5>
+            <h5 class="search-title" id="${result.id}">${result.title.toUpperCase()}</h5>
         </div>
     `
 }
@@ -90,10 +76,11 @@ function renderSearchResults(result) {
 function displaySearchResults(data) {
     const results = data.results.map((item, index) => renderSearchResults(item))
     const totalResultsNum = `<p>Your search returned <span class="resultsNum">${data.total_results}</span> results.</p>`;
+    $('.js-results-num').prop('hidden', false);
     $('.js-results-num').html(totalResultsNum);
     $('.js-search-results').html(results);
-    $('.js-search-results').on('click', '.search-id', function(){
-        let movieID = $(this)
+    $('.js-search-results').on('click', '.search-title', function(event){
+        let movieID = $(this).attr('id')
         console.log(movieID)
         getAPIDataByMovieID(movieID, displayMovieData)
     })
@@ -102,7 +89,7 @@ function displaySearchResults(data) {
 
 function displayMovieData(data) {
     const movie = `
-            <div class="result-container col-12" style="background:linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.9)),
+            <div class="result-container col-12" aria-live="assertive" style="background:linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.9)),
       url(https://image.tmdb.org/t/p/w1280${data.backdrop_path})no-repeat center center">
                 <div class="transparent title-container col-12">
                     <h2 class="transparent movie-title">${data.title.toUpperCase()}</h2>
@@ -123,6 +110,7 @@ function displayMovieData(data) {
                 </div>
             </div>
   `;
+    $('.js-results-num').prop('hidden', true);
     $('.js-search-results').html(movie);
 }
 
