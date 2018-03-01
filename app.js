@@ -60,7 +60,18 @@ function getAPIDataByMovieID(movieID, callback) {
         },
         dataType: 'json',
         type: 'GET',
-        success: callback
+        success: function getAPIVideoData(movieID) {
+            const videoSettings = {
+                url: buildURL('movie/', movieID, '/videos'),
+                data: {
+                    api_key: '8541c092938098d21b11f58a14dd114e',
+                },
+                dataType: 'json',
+                type: 'GET',
+                success: callback
+            };
+            $.ajax(videoSettings)
+        }
     };
     $.ajax(settings);
 }
@@ -85,16 +96,16 @@ function displaySearchResults(data) {
     $('.js-results-num').prop('hidden', false);
     $('.js-results-num').html(totalResultsNum);
     $('.js-search-results').html(results);
-    $('.js-search-results').on('click', '.search-title', function(event){
+    $('.js-search-results').on('click', '.search-title', function(event) {
         let movieID = $(this).attr('id')
         console.log(movieID)
         getAPIDataByMovieID(movieID, displayMovieData)
     })
-    $('.js-search-results').on('click', '.search-poster', function(event){
+    $('.js-search-results').on('click', '.search-poster', function(event) {
         let movieID = $(this).attr('id')
         console.log(movieID)
         getAPIDataByMovieID(movieID, displayMovieData)
-    })      
+    })
 }
 
 
@@ -123,6 +134,10 @@ function displayMovieData(data) {
   `;
     $('.js-results-num').prop('hidden', true);
     $('.js-search-results').html(movie);
+}
+
+function displayVideoData(data) {
+
 }
 
 
