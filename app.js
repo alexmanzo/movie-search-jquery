@@ -85,26 +85,31 @@ function renderSearchResults(result) {
 //Callback function for GetAPIData. Retrieves data and writes to page.
 function displaySearchResults(data) {
     const results = data.results.map((item, index) => renderSearchResults(item))
-    const totalResultsNum = `<p class="results-num col-12">Your search returned <span class="resultsNum">${data.total_results}</span> results.</p>`;
+    let totalResultsNum = `<p class="results-num col-12">Your search returned <span class="resultsNum">${data.total_results}</span> results.</p>`;
+    if (data.total_results === 1) {
+        totalResultsNum = `<p class="results-num col-12">Your search returned <span class="resultsNum">${data.total_results}</span> result.</p>`
+    } else {
+        totalResultsNum = `<p class="results-num col-12">Your search returned <span class="resultsNum">${data.total_results}</span> results.</p>`
+    }
     $('.js-results-num').prop('hidden', false);
     $('.js-results-num').html(totalResultsNum);
     $('.js-search-results').html(results);
     //Listeners to retrieve MovieID and navigate to movie page.
-    $('.js-search-results').on('click', '.search-title', function(event){
+    $('.js-search-results').on('click', '.search-title', function(event) {
         let movieID = $(this).attr('id')
         console.log(movieID)
         getAPIDataByMovieID(movieID, displayMovieData)
     })
-    $('.js-search-results').on('click', '.search-poster', function(event){
+    $('.js-search-results').on('click', '.search-poster', function(event) {
         let movieID = $(this).attr('id')
         console.log(movieID)
         getAPIDataByMovieID(movieID, displayMovieData)
-    })      
+    })
 }
 
 //Displays movie page
 function displayMovieData(data) {
-    const movie = `
+    let movie = `
             <div class="result-container col-12" aria-live="assertive" style="background:linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.9)),
       url(https://image.tmdb.org/t/p/w1280${data.backdrop_path})no-repeat center center">
                 <div class="transparent title-container col-12">
@@ -126,6 +131,50 @@ function displayMovieData(data) {
                 </div>
             </div>
   `;
+    if (data.budget === 0) {
+            movie = `
+            <div class="result-container col-12" aria-live="assertive" style="background:linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.9)),
+      url(https://image.tmdb.org/t/p/w1280${data.backdrop_path})no-repeat center center">
+                <div class="transparent title-container col-12">
+                    <h2 class="transparent movie-title">${data.title.toUpperCase()}</h2>
+                    <h3 class="transparent tagline">${data.tagline}</h3>
+                </div>
+                <div class="transparent col-4">
+                    <img src="https://image.tmdb.org/t/p/w1280${data.poster_path}" alt="${data.title}" id="poster" class="poster">
+                </div>
+                <div class="left-info-container transparent col-6">
+                    <h4 class="category transparent">YEAR RELEASED:<span class="transparent info">${data.release_date.substring(0,4)}</span></h4>
+                    <h4 class="category transparent">RUNTIME:<span class="transparent info">${data.runtime} minutes</span></h4>
+                    <h4 class="category transparent">PLOT:<span class="transparent info text-heavy">${data.overview}</span></h4>
+                    <h4 class="category transparent">GENRES:<span class="transparent info text-heavy">${data.genres.map(function(genre) {return ` ${genre.name}`})}</span></h4>
+                </div>
+            </div>
+  `;
+    } else {
+        movie = `
+            <div class="result-container col-12" aria-live="assertive" style="background:linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.9)),
+      url(https://image.tmdb.org/t/p/w1280${data.backdrop_path})no-repeat center center">
+                <div class="transparent title-container col-12">
+                    <h2 class="transparent movie-title">${data.title.toUpperCase()}</h2>
+                    <h3 class="transparent tagline">${data.tagline}</h3>
+                </div>
+                <div class="transparent col-4">
+                    <img src="https://image.tmdb.org/t/p/w1280${data.poster_path}" alt="${data.title}" id="poster" class="poster">
+                </div>
+                <div class="left-info-container transparent col-4">
+                    <h4 class="category transparent">YEAR RELEASED:<span class="transparent info">${data.release_date.substring(0,4)}</span></h4>
+                    <h4 class="category transparent">RUNTIME:<span class="transparent info">${data.runtime} minutes</span></h4>
+                    <h4 class="category transparent">PLOT:<span class="transparent info text-heavy">${data.overview}</span></h4>
+                </div>
+                <div class="right-info-container transparent col-4">
+                    <h4 class="category transparent">GENRES:<span class="transparent info text-heavy">${data.genres.map(function(genre) {return ` ${genre.name}`})}</span></h4>
+                    <h4 class="category transparent">BUDGET:<span class="transparent info">$${data.budget.toLocaleString()}</span></h4>
+                    <h4 class="category transparent">REVENUE:<span class="transparent info">$${data.revenue.toLocaleString()}</span></h4>
+                </div>
+            </div>
+  `;
+    }
+
     $('.js-results-num').prop('hidden', true);
     $('.js-search-results').html(movie);
 }

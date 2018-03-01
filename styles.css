@@ -99,9 +99,6 @@ span.info {
 	text-align: justify;
 }
 
-.category, .info {
-	margin-top: -4px;
-}
 
 /* Eliminates background from p elements written to DOM */
 .transparent {
