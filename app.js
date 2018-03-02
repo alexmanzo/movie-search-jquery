@@ -105,6 +105,7 @@ function displaySearchResults(data) {
         let movieID = $(this).attr('id')
         console.log(movieID)
         getAPIDataByMovieID(movieID, displayMovieData)
+        getAPIVideoData(movieID, displayVideoData)
     })
 }
 
@@ -137,7 +138,8 @@ function displayMovieData(data) {
 }
 
 function displayVideoData(data) {
-
+    const trailer = `<a href="https://www.youtube.com/watch?v=${data.results[0].key}" target="_blank">WATCH TRAILER</a>`
+    $('.js-search-results').append()
 }
 
 
