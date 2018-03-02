@@ -71,7 +71,7 @@ function getAPIDataByMovieID(movieID, callback) {
 function renderSearchResults(result) {
     return `
         <div class="search-result-container transparent row col-12">
-            <div class="poster-container search-poster col-3" id="${result.id}">
+            <div class="search-poster col-4" id="${result.id}">
                 <img src="https://image.tmdb.org/t/p/w1280${result.poster_path}" alt="${result.title}" class="poster">
             </div>
             <div class="search-text-info transparent col-6">

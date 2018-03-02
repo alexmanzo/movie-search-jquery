@@ -31,6 +31,33 @@
   width: 100%;
 }
 
+.header {
+  font-size: 20px;
+  width: 100%;
+}
+
+.form-input-wrapper {
+  width: 250px;
+}
+
+.tt-suggestion:active {
+color: #081c24;
+  background-color: #01d277;
+}
+
+.js-search-button:active {
+    color: #081c24;
+    background-color: #01d277;
+}
+
+.tagline {
+  line-height: 24px;
+}
+
+
+
+
+
 
 /* Non-mobile, grid */
 @media only screen and (min-width: 720px) {
@@ -53,4 +80,26 @@
   .col-12 {
     width: 100%;
   }
+
+    .header {
+    font-size: 100px;
+  }
+
+  .form-input-wrapper {
+    width: calc(100% - 100px);
+  }
+
+  .js-search-button {
+    right: 12px;
+    position: absolute;
+  }
+
+  .poster-container {
+    margin-left: 10%;
+  }
+
+  .results-num {
+    margin-left: 11%;
+  }
 }
+
