@@ -52,6 +52,10 @@ span.title {
 }
 
 
+.empty-search {
+	text-align: center;
+}
+
 /* Movie Page Styling */
 
 .result-container, .search-result-container {

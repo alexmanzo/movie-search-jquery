@@ -74,9 +74,9 @@ function renderSearchResults(result) {
             <div class="search-poster col-4" id="${result.id}">
                 <img src="https://image.tmdb.org/t/p/w1280${result.poster_path}" alt="${result.title}" class="poster">
             </div>
-            <div class="search-text-info  col-6">
-                <h5 class="search-title" id="${result.id}">${result.title.toUpperCase()}<span class="title">(${result.release_date.substring(0,4)})</span></h5>
-                <p class="info text-heavy">${result.overview}</p>
+            <div class="search-text-info col-6 transparent">
+                <h5 class="search-title transparent" id="${result.id}">${result.title.toUpperCase()}<span class="title transparent">(${result.release_date.substring(0,4)})</span></h5>
+                <p class="info text-heavy transparent">${result.overview}</p>
         </div>
     `
 }
@@ -185,7 +185,11 @@ function watchSubmit() {
         const searchTarget = $(event.currentTarget).find('#query');
         const search = searchTarget.val();
         searchTarget.val("");
-        getAPIData(search, displaySearchResults);
+        if (search === "") {
+            $('.js-search-results').html(`<p class="empty-search">Please enter a search term</p>`);
+        } else {
+            getAPIData(search, displaySearchResults);
+            }
     });
 
 }
