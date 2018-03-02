@@ -60,20 +60,23 @@ function getAPIDataByMovieID(movieID, callback) {
         },
         dataType: 'json',
         type: 'GET',
-        success: function getAPIVideoData(movieID) {
-            const videoSettings = {
-                url: buildURL('movie/', movieID, '/videos'),
-                data: {
-                    api_key: '8541c092938098d21b11f58a14dd114e',
-                },
-                dataType: 'json',
-                type: 'GET',
-                success: callback
-            };
-            $.ajax(videoSettings)
-        }
+        success: callback
     };
     $.ajax(settings);
+}
+
+function getAPIVideoData(movieID, callback) {
+    console.log('get getAPIVideoData ran')
+    const videoSettings = {
+        url: buildURL('movie/', movieID, '/videos'),
+        data: {
+            api_key: '8541c092938098d21b11f58a14dd114e',
+        },
+        dataType: 'json',
+        type: 'GET',
+        success: callback
+    };
+    $.ajax(videoSettings)
 }
 
 function renderSearchResults(result) {
@@ -100,10 +103,10 @@ function displaySearchResults(data) {
         let movieID = $(this).attr('id')
         console.log(movieID)
         getAPIDataByMovieID(movieID, displayMovieData)
+        getAPIVideoData(movieID, displayVideoData)
     })
     $('.js-search-results').on('click', '.search-poster', function(event) {
         let movieID = $(this).attr('id')
-        console.log(movieID)
         getAPIDataByMovieID(movieID, displayMovieData)
         getAPIVideoData(movieID, displayVideoData)
     })
@@ -138,8 +141,9 @@ function displayMovieData(data) {
 }
 
 function displayVideoData(data) {
+    console.log('diplsay video data ran')
     const trailer = `<a href="https://www.youtube.com/watch?v=${data.results[0].key}" target="_blank">WATCH TRAILER</a>`
-    $('.js-search-results').append()
+    $('.js-search-results').append(trailer)
 }
 
 
