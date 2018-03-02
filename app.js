@@ -70,14 +70,13 @@ function getAPIDataByMovieID(movieID, callback) {
 //Generate HTML structure for search results.
 function renderSearchResults(result) {
     return `
-        <div class="search-result-container transparent row col-12">
+        <div class="search-result-container col-12">
             <div class="search-poster col-4" id="${result.id}">
                 <img src="https://image.tmdb.org/t/p/w1280${result.poster_path}" alt="${result.title}" class="poster">
             </div>
-            <div class="search-text-info transparent col-6">
+            <div class="search-text-info  col-6">
                 <h5 class="search-title" id="${result.id}">${result.title.toUpperCase()}<span class="title">(${result.release_date.substring(0,4)})</span></h5>
                 <p class="info text-heavy">${result.overview}</p>
-            </div>
         </div>
     `
 }

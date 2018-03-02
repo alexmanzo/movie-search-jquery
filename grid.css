@@ -32,7 +32,7 @@
 }
 
 .header {
-  font-size: 20px;
+  font-size: 40px;
   width: 100%;
 }
 
@@ -54,8 +54,9 @@ color: #081c24;
   line-height: 24px;
 }
 
-
-
+.movie-title {
+  line-height: 36px;
+}
 
 
 
@@ -81,7 +82,7 @@ color: #081c24;
     width: 100%;
   }
 
-    .header {
+  .header {
     font-size: 100px;
   }
 
@@ -94,12 +95,9 @@ color: #081c24;
     position: absolute;
   }
 
-  .poster-container {
-    margin-left: 10%;
+  .search-result-container {
+    margin-left: 8%;
   }
 
-  .results-num {
-    margin-left: 11%;
-  }
 }
 

@@ -38,9 +38,19 @@ span.title {
 	line-height: 24px;
 }
 
+
 .search-title:hover, .search-poster:hover {
 	cursor: pointer;
 }
+
+.poster {
+	width: 100%;
+}
+
+.results-num {
+	text-align: center;
+}
+
 
 /* Movie Page Styling */
 
@@ -77,11 +87,6 @@ span.title {
 
 span.info {
 	padding-left: 15px;
-}
-
-
-#poster {
-	width: 100%;
 }
 
 .title-container {
