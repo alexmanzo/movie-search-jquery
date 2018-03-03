@@ -1,6 +1,5 @@
 //Initialize the Typeahead Functionality
 $(window).on('load', function() {
-    // Instantiate the Bloodhound suggestion engine
     const movies = new Bloodhound({
         datumTokenizer: function(datum) {
             return Bloodhound.tokenizers.whitespace(datum.value);
@@ -21,7 +20,6 @@ $(window).on('load', function() {
 
     // Initialize the Bloodhound suggestion engine
     movies.initialize();
-    // Instantiate the Typeahead UI
     $('.typeahead').typeahead(null, {
         displayKey: 'value',
         source: movies.ttAdapter(),
@@ -32,7 +30,7 @@ $(window).on('load', function() {
     });
 });
 
-//Build URL to request API data from. Second and Third Cats MUST include / at beginning of parameter when function called. 
+//Build URL to request API data from. Second and Third Cats MUST include / for URL. 
 function buildURL(firstCat, secondCat, thirdCat) {
     return `https://api.themoviedb.org/3/${firstCat}${secondCat}${thirdCat}`
 }
@@ -96,12 +94,10 @@ function displaySearchResults(data) {
     //Listeners to retrieve MovieID and navigate to movie page.
     $('.js-search-results').on('click', '.search-title', function(event) {
         let movieID = $(this).attr('id')
-        console.log(movieID)
         getAPIDataByMovieID(movieID, displayMovieData)
     })
     $('.js-search-results').on('click', '.search-poster', function(event) {
         let movieID = $(this).attr('id')
-        console.log(movieID)
         getAPIDataByMovieID(movieID, displayMovieData)
     })
 }
