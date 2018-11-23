@@ -15,4 +15,4 @@
 <p>This project was created using HTML, CSS, JavaScript, and jQuery. It also made use of Twitter's <a href="https://github.com/twitter/typeahead.js" target="_blank">typeahead.js library</a> and <a href="https://www.themoviedb.org/documentation/api">The Movie Database's API.</a></p>
 
 <h2>Author</h2>
-<p>This project was created by Michelle Manzo.</p>
+<p>This project was created by Alex Manzo.</p>
